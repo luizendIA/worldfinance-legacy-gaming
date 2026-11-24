@@ -4,6 +4,10 @@
 
 An independent graphics research lab initiated and sponsored by World Finance. We measure what older GPUs can actually render and publish the workload, raw timings and image-quality cost. Software, research data and participation are freely available. [Português](README.pt-BR.md) · [Website](https://luizendIA.github.io/worldfinance-legacy-gaming/) · [Discussions](https://github.com/luizendIA/worldfinance-legacy-gaming/discussions)
 
+### Indexed geometry on the RX 570
+
+Our four-triangle meshlet reproduced the CPU reference at all 65,536 pixels in four physical runs. Maximum absolute depth error was 5.96 × 10⁻⁸. [Images, raw buffers and timings](benchmarks/indexed-rx570/README.md)
+
 ### First result
 
 On a physical Radeon RX 570, our original terrain scene took **4.343 ms** at 1280 × 720 and **1.505 ms** at 640 × 360 with bilinear upscaling to the same output. These are medians of four run medians for two GPU passes. RGB RMSE was 7.613/255. D3D12 reported Shader Model 6.5 and Mesh Shader Tier 0. GTA VI remains untested. [Method, hardware matrix and raw samples](benchmarks/README.md) · [Feasibility report](reports/rx570.md)

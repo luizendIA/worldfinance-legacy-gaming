@@ -128,6 +128,7 @@ void capture(const wchar_t *path, const FrameRun &r) {
 int wmain(int argc, wchar_t **argv) {
     try {
         bool warp = false, smoke = false, reverse = false;
+        const wchar_t *indexedDirectory = nullptr;
         const wchar_t *capturePath = nullptr;
         for (int i = 1; i < argc; ++i) {
             const std::wstring arg = argv[i];
@@ -137,11 +138,13 @@ int wmain(int argc, wchar_t **argv) {
                 smoke = true;
             else if (arg == L"--reverse")
                 reverse = true;
+            else if (arg == L"--indexed" && !indexedDirectory && i + 1 < argc)
+                indexedDirectory = argv[++i];
             else if (arg == L"--capture" && i + 1 < argc)
                 capturePath = argv[++i];
             else
-                throw std::runtime_error(
-                    "Usage: legacy-lab [--warp] [--smoke] [--reverse] [--capture frame.ppm]");
+                throw std::runtime_error("Usage: legacy-lab [--warp] [--smoke] [--reverse] [--capture "
+                                         "frame.ppm] or --indexed NEW_DIRECTORY [--warp] [--smoke]");
         }
         const unsigned ow = smoke ? 160 : 1280, oh = smoke ? 90 : 720;
         const unsigned warmups = smoke ? 1 : 8, count = smoke ? 0 : 32;
@@ -149,6 +152,21 @@ int wmain(int argc, wchar_t **argv) {
         DXGI_ADAPTER_DESC1 d{};
         check(adapter->GetDesc1(&d), "GetDesc1");
         const auto caps = capabilities(adapter.Get());
+        if (indexedDirectory) {
+            if (reverse || capturePath)
+                throw std::runtime_error("Terrain switches supplied for indexed fixture");
+            const auto samples = indexedFixture(adapter.Get(), indexedDirectory, smoke);
+            std::cout << "{\"schema\":1,\"workload\":\"indexed-v1\",\"adapter\":"
+                      << jsonString(d.Description) << ",\"software\":" << (warp ? "true" : "false")
+                      << ",\"d3d12\":" << caps << ",\"draws_per_batch\":32,\"gpu_batch_ms\":[";
+            for (size_t i = 0; i < samples.size(); ++i) {
+                if (i)
+                    std::cout << ',';
+                std::cout << std::fixed << std::setprecision(7) << samples[i];
+            }
+            std::cout << "]}\n";
+            return 0;
+        }
         Renderer renderer(adapter.Get());
         const auto localBudget = budget(adapter.Get());
         auto profile = [&](bool low) {
