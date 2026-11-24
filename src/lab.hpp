@@ -27,6 +27,8 @@ struct FrameRun {
     std::vector<uint8_t> rgba;
 };
 
+std::vector<double> indexedFixture(IDXGIAdapter *adapter, const wchar_t *directory, bool smoke);
+
 class Renderer {
     ComPtr<ID3D11Device> device;
     ComPtr<ID3D11DeviceContext> context;

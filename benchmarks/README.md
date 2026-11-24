@@ -19,6 +19,7 @@ Build using the [instructions](../README.md). Run `legacy-lab.exe` twice and `le
 
 | Hardware/runtime | Workload | Status | Scope |
 | --- | --- | --- | --- |
+| RX 570 4 GB / Windows 10 | [indexed-v1](indexed-rx570/README.md) | Measured | Four captures matched CPU coverage, primitive IDs and depth tolerance |
 | RX 570 4 GB / Windows 10 | terrain-v1, native and scaled | Measured | 256 GPU timing samples and four image comparisons |
 | Microsoft WARP / Windows | terrain-v1, small output | Smoke tested | Software rasterization, no hardware timing |
 | RX 570 / D3D12 | feature queries | Measured | SM 6.5 and mesh tier 0 on this stack |

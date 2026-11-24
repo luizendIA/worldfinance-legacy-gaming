@@ -4,6 +4,10 @@
 
 Laboratório independente de computação gráfica idealizado e patrocinado pela World Finance. Publicamos código, medições e imagens de referência para que outras pessoas possam repetir os testes em hardware acessível. [English](README.md) · [Site em português](https://luizendIA.github.io/worldfinance-legacy-gaming/pt.html) · [Comunidade](https://github.com/luizendIA/worldfinance-legacy-gaming/discussions)
 
+### Geometria indexada na RX 570
+
+Em quatro execuções físicas, a cena de quatro triângulos reproduziu a cobertura e a identificação da referência em todos os 65.536 pixels. O maior erro absoluto de profundidade foi de 5,96 × 10⁻⁸. [Imagens, buffers e tempos de GPU](benchmarks/indexed-rx570/README.md)
+
 ### Primeiro experimento
 
 Na Radeon RX 570 física, nossa cena de terreno levou **4,343 ms** em 1280 × 720 e **1,505 ms** em 640 × 360 com ampliação bilinear para 1280 × 720. Cada valor é a mediana das medianas de quatro execuções. O erro quadrático médio em raiz (RMSE) nos canais RGB foi de 7,613 em uma escala de 0 a 255. O driver expôs Shader Model 6.5 e Mesh Shader Tier 0. GTA VI segue sem teste neste equipamento. [Dados e matriz de hardware](benchmarks/README.md) · [Viabilidade da RX 570](reports/rx570.md)

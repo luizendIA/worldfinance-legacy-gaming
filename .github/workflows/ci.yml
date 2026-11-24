@@ -31,5 +31,11 @@ jobs:
         run: cmake --build build --config Release
       - name: Test
         run: ctest --test-dir build -C Release --output-on-failure
+      - name: Compare indexed WARP readback with the CPU reference
+        run: |
+          $capture = Join-Path $env:RUNNER_TEMP "indexed-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          ./build/Release/legacy-lab.exe --indexed $capture --warp --smoke
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python tools/indexed_reference.py $capture
       - name: Hash executable
         run: (Get-FileHash -Algorithm SHA256 build/Release/legacy-lab.exe).Hash

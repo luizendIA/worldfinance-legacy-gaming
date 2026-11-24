@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-11-24 · Indexed geometry experiment
+
+Published the CPU meshlet remap, GPU indexed-draw fixture, independent CPU oracle and four measured runs with ID and depth readbacks. [Results](benchmarks/indexed-rx570/README.md)
+
 ## 2026-11-24 · Initial research publication
 
 - Recorded the source, license, third-party notices, dependency inventory and security boundaries of VIctory at `ffe310eb2098e52169f4c44db5ffdabf43a72622`. No changes were made to VIctory.
