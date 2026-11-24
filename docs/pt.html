@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark"><meta name="theme-color" content="#081213">
+    <title>World Finance Legacy Gaming · Laboratório de gráficos</title>
+    <meta name="description" content="Jogos de última geração. Hardware antigo. Inovação de código aberto."><link rel="stylesheet" href="style.css">
+    <link rel="alternate" hreflang="en" href="index.html"><link rel="alternate" hreflang="pt-BR" href="pt.html">
+    <script src="support.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Pular para o conteúdo</a>
+    <header>
+      <div class="wrap mast">
+        <a class="brand" href="pt.html" aria-label="World Finance Legacy Gaming"><i aria-hidden="true">W</i> World Finance</a>
+        <nav aria-label="Navegação">
+          <a href="#results">Resultados</a>
+          <a href="#hardware">Hardware</a>
+          <a href="#contribute">Contribuir</a>
+        </nav>
+        <div class="langs" aria-label="Idioma">
+          <a href="index.html" lang="en" >EN</a><span>/</span>
+          <a href="pt.html" lang="pt-BR" aria-current="page">PT</a>
+        </div>
+      </div></header>
+    <main id="main" class="wrap">
+      <section class="hero">
+        <div class="intro">
+          <p class="eyebrow">Pesquisa aberta em computação gráfica</p>
+          <h1>Legacy Gaming<em>.</em></h1>
+          <p class="lead">Jogos de última geração. Hardware antigo. Inovação de código aberto.</p>
+          <p>Criamos experimentos gráficos para quem ainda depende de placas de vídeo antigas. Nossa primeira bancada reúne uma Radeon RX 570 de 4 GB e um Xeon E5-2666 v3.</p>
+          <div class="actions">
+            <a href="#results" class="button primary">Ver as medições</a>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming" class="button">Explorar o código</a>
+          </div>
+        </div>
+        <figure>
+          <img src="terrain.png" alt="Terreno verde quadriculado e sol âmbar gerados pela RX 570 durante o teste em resolução nativa." width="1280" height="720">
+          <figcaption>Terrain v1 · Imagem capturada na RX 570 de referência</figcaption>
+        </figure>
+      </section>
+      <section id="results" class="split">
+        <div>
+          <p class="eyebrow"><time datetime="2026-11-24">24 de novembro de 2026</time></p>
+          <h2>Resolução em teste</h2>
+          <p>Duas etapas de renderização geram uma imagem. Mudamos a resolução do terreno e medimos o tempo de GPU até o fim da composição bilinear.</p>
+          <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/tree/main/benchmarks" class="rulelink">Método e amostras brutas</a>
+        </div>
+        <div class="chart">
+          <h3>Tempo mediano de GPU em ms · mediana das medianas de quatro execuções</h3>
+          <div class="barrow">
+            <div><strong>Nativa</strong><b>4,343 ms</b>
+            </div>
+            <small>Cena e saída em 1280 × 720</small>
+            <div class="track"><i class="native"></i>
+            </div>
+          </div>
+          <div class="barrow">
+            <div><strong>Ampliada</strong><b>1,505 ms</b>
+            </div>
+            <small>Cena em 640 × 360 → saída em 1280 × 720</small>
+            <div class="track"><i class="scaled"></i>
+            </div>
+          </div>
+          <p>Nesta cena, a resolução reduzida consumiu 65,3% menos tempo de GPU. O erro de imagem RGB foi de 7,613 em uma escala de 0 a 255. Cada execução registrou 32 intervalos por perfil após oito quadros de aquecimento.</p>
+        </div>
+      </section>
+      <section id="hardware" class="split">
+        <div>
+          <h2>A máquina de referência</h2>
+          <p>Os recursos detectados correspondem a esta combinação de Windows e driver.</p>
+          <dl>
+            <div>
+              <dt>GPU</dt>
+              <dd>AMD Radeon RX 570 · 4 GB</dd>
+            </div>
+            <div>
+              <dt>CPU</dt>
+              <dd>Intel Xeon E5-2666 v3</dd>
+            </div>
+            <div>
+              <dt>Memória</dt>
+              <dd>16 GB</dd>
+            </div>
+            <div>
+              <dt>Sistema operacional</dt>
+              <dd>Windows 10 Pro x64 · 19045</dd>
+            </div>
+            <div>
+              <dt>Driver de vídeo</dt>
+              <dd>31.0.21924.61</dd>
+            </div>
+            <div>
+              <dt>Shader Model</dt>
+              <dd>6.5</dd>
+            </div>
+            <div>
+              <dt>Mesh shaders no D3D12</dt>
+              <dd>Tier 0 · sem suporte</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="note">
+          <h3>Roda GTA VI?</h3>
+          <p>GTA VI continua sem teste nesta máquina. O caminho gráfico do VIctory para renderizar o mundo pede Shader Model 6.6 e mesh shaders. Medimos Shader Model 6.5 e mesh tier 0. O próximo experimento vai comparar um desenho indexado convencional com uma referência sintética.</p>
+          <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/reports/rx570.md" class="rulelink">Relatório de viabilidade da RX 570</a>
+        </div>
+      </section>
+      <section class="split research">
+        <article>
+          <h2>Diário de desenvolvimento</h2>
+          <p>Publicamos quatro execuções na GPU física, a cena procedural original e os hashes idênticos de duas compilações locais. Os próximos marcos são uma medição em outra Polaris e a validação da geometria.</p>
+          <div class="resources">
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/CHANGELOG.md">Histórico de alterações</a>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/reports/build.md">Relatório de compilação</a>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/ROADMAP.md">Roadmap da pesquisa</a>
+          </div>
+        </article>
+        <article>
+          <h2>Origem e segurança</h2>
+          <p>Marvisak e os colaboradores do VIctory são os autores do projeto de referência. A política de materiais exclui uma tabela BCPack da licença. Nosso laboratório tem código original, histórico Git próprio e materiais sintéticos.</p>
+          <div class="resources">
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/reports/upstream-review.md">Auditoria do upstream</a>
+            <a href="https://github.com/Marvisak/VIctory/tree/ffe310eb2098e52169f4c44db5ffdabf43a72622">VIctory no commit analisado</a>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/security/advisories/new">Relatar em particular</a>
+          </div>
+        </article>
+      </section>
+      <section id="contribute" class="join">
+        <div>
+          <h2>Traga outra GPU para o laboratório.</h2>
+          <p>Um teste em outra máquina ajuda a avaliar o efeito do driver e da placa. Programadores podem contribuir com uma cena de geometria indexada, um diagnóstico de Vulkan ou uma revisão do método de medição.</p>
+        </div>
+        <div class="actions">
+          <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/CONTRIBUTING.md" class="button primary">Guia de contribuição</a>
+          <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/discussions" class="button">Participar da comunidade</a>
+        </div>
+      </section>
+      <section id="support" class="split">
+        <div>
+          <h2>Uma iniciativa apoiada pela World Finance</h2>
+          <p>A World Finance apoia a inovação de código aberto e a pesquisa tecnológica para tornar os jogos modernos mais acessíveis, inclusive para pessoas que não possuem condições financeiras de adquirir computadores de alto desempenho.</p>
+          <p>Conheça a World Finance e descubra como apoiar voluntariamente nossas pesquisas.</p>
+        </div>
+        <div class="support">
+          <h3>Apoie o desenvolvimento de código aberto</h3>
+          <div class="supportlinks">
+            <a href="https://wordfinance.org/about.html" class="button">Conhecer a World Finance</a>
+            <a href="https://wordfinance.org/" class="button">Explorar o ecossistema</a>
+            <a href="https://wordfinance.org/wfc.html" class="button">Conhecer a WFC</a>
+            <button id="donate" class="button" disabled>Apoiar voluntariamente</button>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/discussions" class="button">Participar da comunidade</a>
+            <a href="https://github.com/luizendIA/worldfinance-legacy-gaming/blob/main/CONTRIBUTING.md" class="button">Contribuir com código</a>
+          </div>
+          <p id="pending">O canal de doação específico do projeto aguarda verificação.</p>
+          <p>O software e a comunidade são gratuitos. Comprar WFC é opcional. A compra do token e a doação ao projeto são operações distintas. Criptoativos podem perder valor, inclusive todo o valor gasto.</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap"><strong>World Finance Legacy Gaming</strong><span>Pesquisa independente · Sem vínculo com a Rockstar Games.</span>
+      </div>
+    </footer></body></html>

@@ -1,0 +1,35 @@
+name: Graphics lab
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    name: Build and smoke test
+    runs-on: windows-2022
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Fetch the event commit
+        run: |
+          git init .
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          git fetch --no-tags --depth 1 "https://github.com/$env:GITHUB_REPOSITORY.git" "$env:GITHUB_SHA"
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          git -c advice.detachedHead=false checkout --detach FETCH_HEAD
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          if ((git rev-parse HEAD) -ne $env:GITHUB_SHA) { throw 'Unexpected revision' }
+      - name: Validate evidence and website
+        run: python tools/verify.py
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+      - name: Build
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+      - name: Hash executable
+        run: (Get-FileHash -Algorithm SHA256 build/Release/legacy-lab.exe).Hash
