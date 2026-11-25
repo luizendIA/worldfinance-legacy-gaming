@@ -27,3 +27,5 @@ Build using the [instructions](../README.md). Run `legacy-lab.exe` twice and `le
 | Other physical GPUs | terrain-v1 | Open for contributions | Supply driver, OS, rig details and raw JSON |
 
 [Dynamic resolution, paired frame times and full-image comparisons](dynamic-rx570/README.md)
+
+[RX 570 Vulkan vs D3D11: image and timing comparison](vulkan-rx570/README.md)

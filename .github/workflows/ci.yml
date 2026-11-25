@@ -31,6 +31,12 @@ jobs:
             python tools/dynamic_summary.py "benchmarks/dynamic-rx570/raw/$group"
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
           }
+      - name: Check published API comparisons
+        run: |
+          foreach ($series in 'matched-poll','native-waits') {
+            python tools/compare_apis.py --summary "benchmarks/vulkan-rx570/raw/$series"
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          }
       - name: Configure
         run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
       - name: Build

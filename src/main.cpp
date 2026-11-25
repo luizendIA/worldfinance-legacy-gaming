@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+#include "api_run.hpp"
 #include "lab.hpp"
 #include <algorithm>
 #include <cmath>
@@ -130,6 +131,21 @@ void capture(const wchar_t *path, const FrameRun &r) {
 
 int wmain(int argc, wchar_t **argv) {
     try {
+        if (argc == 3 && std::wstring(argv[1]) == L"--api-reference") {
+            const std::filesystem::path dir(argv[2]);
+            if (!std::filesystem::create_directory(dir))
+                throw std::runtime_error("Choose a new capture directory");
+            auto adapter = selectAdapter(false);
+            DXGI_ADAPTER_DESC1 desc{};
+            check(adapter->GetDesc1(&desc), "GetDesc1");
+            Renderer renderer(adapter.Get());
+            const auto run = renderer.dynamicResolution(false, 8, &dir);
+            std::vector<api_test::Time> times;
+            for (const auto &f : run.frames)
+                times.push_back({f.nativeMs, f.nativeWallMs});
+            api_test::print("D3D11", jsonString(desc.Description), times);
+            return 0;
+        }
         if (argc > 1 && std::wstring(argv[1]) == L"--dynamic") {
             bool reverse = false;
             unsigned budgetMs = 8;
