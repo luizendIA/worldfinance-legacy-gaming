@@ -27,6 +27,8 @@ struct FrameRun {
     std::vector<uint8_t> rgba;
 };
 
+class MemoryTrace;
+
 class Renderer {
     ComPtr<ID3D11Device> device;
     ComPtr<ID3D11DeviceContext> context;
@@ -37,5 +39,6 @@ class Renderer {
   public:
     Renderer(IDXGIAdapter *adapter);
     FrameRun run(unsigned width, unsigned height, unsigned outputWidth, unsigned outputHeight,
-                 unsigned warmups, unsigned samples);
+                 unsigned warmups, unsigned samples, MemoryTrace *trace = nullptr);
+    void flush() { context->Flush(); }
 };

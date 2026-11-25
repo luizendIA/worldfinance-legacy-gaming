@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "lab.hpp"
+#include "memory.hpp"
 #include "shaders.hpp"
 #include <algorithm>
 #include <chrono>
@@ -88,8 +89,12 @@ Renderer::Renderer(IDXGIAdapter *adapter) {
 }
 
 FrameRun Renderer::run(unsigned w, unsigned h, unsigned ow, unsigned oh, unsigned warmups,
-                       unsigned samples) {
+                       unsigned samples, MemoryTrace *trace) {
     Surface scene = surface(device.Get(), w, h, true), output = surface(device.Get(), ow, oh, false);
+    if (trace) {
+        trace->record("after_allocation");
+        trace->requireHeadroom(0);
+    }
     auto pass = [&](Surface &s, unsigned width, unsigned height, ID3D11PixelShader *shader) {
         D3D11_VIEWPORT viewport{0, 0, static_cast<float>(width), static_cast<float>(height), 0, 1};
         context->RSSetViewports(1, &viewport);
@@ -107,6 +112,25 @@ FrameRun Renderer::run(unsigned w, unsigned h, unsigned ow, unsigned oh, unsigne
     };
     for (unsigned i = 0; i < warmups; ++i)
         draw();
+    if (trace) {
+        auto fence = query(device.Get(), D3D11_QUERY_EVENT);
+        context->End(fence.Get());
+        context->Flush();
+        const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(15);
+        for (;;) {
+            HRESULT hr = context->GetData(fence.Get(), nullptr, 0, D3D11_ASYNC_GETDATA_DONOTFLUSH);
+            if (hr == S_OK)
+                break;
+            check(hr, "Render event");
+            trace->record("render_pending");
+            trace->requireHeadroom(0);
+            if (std::chrono::steady_clock::now() >= deadline)
+                throw std::runtime_error("Render event timed out");
+            Sleep(5);
+        }
+        trace->record("after_render");
+        trace->requireHeadroom(static_cast<uint64_t>(ow) * oh * 4);
+    }
     FrameRun result{w, h, {}, {}};
     auto disjoint = query(device.Get(), D3D11_QUERY_TIMESTAMP_DISJOINT);
     auto start = query(device.Get(), D3D11_QUERY_TIMESTAMP),
@@ -145,5 +169,7 @@ FrameRun Renderer::run(unsigned w, unsigned h, unsigned ow, unsigned oh, unsigne
         std::memcpy(&result.rgba[size_t(y) * ow * 4],
                     static_cast<const uint8_t *>(map.pData) + size_t(y) * map.RowPitch, ow * 4);
     context->Unmap(staging.Get(), 0);
+    if (trace)
+        trace->record("after_readback");
     return result;
 }

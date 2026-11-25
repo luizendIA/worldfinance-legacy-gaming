@@ -40,3 +40,5 @@ World Finance supports open-source innovation and research aimed at making moder
 Our mission is to explore new possibilities through engineering, community collaboration and technological innovation.
 
 Explore World Finance and learn how to voluntarily support our research. Participation and downloads are free. [Support Open-Source Development](https://luizendIA.github.io/worldfinance-legacy-gaming/#support)
+
+[RX 570 video memory before, during and after rendering](benchmarks/vram-rx570/README.md)

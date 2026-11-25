@@ -32,3 +32,5 @@ O VIctory é obra de Marvisak e dos colaboradores do projeto original. A políti
 A World Finance apoia a inovação de código aberto e a pesquisa tecnológica para tornar os jogos modernos mais acessíveis, inclusive para pessoas que não possuem condições financeiras de adquirir computadores de alto desempenho.
 
 Conheça a World Finance e descubra como apoiar voluntariamente nossas pesquisas. Acesso e participação são gratuitos. [Área de apoio](https://luizendIA.github.io/worldfinance-legacy-gaming/pt.html#support)
+
+[Memória de vídeo da RX 570 antes, durante e depois da renderização](benchmarks/vram-rx570/README.md)

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "lab.hpp"
+#include "memory.hpp"
 #include <algorithm>
 #include <cmath>
 #include <d3d12.h>
@@ -127,6 +128,16 @@ void capture(const wchar_t *path, const FrameRun &r) {
 
 int wmain(int argc, wchar_t **argv) {
     try {
+        if (argc >= 2 && std::wstring(argv[1]) == L"--vram") {
+            if (argc != 3 || (std::wstring(argv[2]) != L"native" && std::wstring(argv[2]) != L"scaled"))
+                throw std::runtime_error("Usage: legacy-lab --vram native|scaled");
+            const auto adapter = selectAdapter(false);
+            DXGI_ADAPTER_DESC1 desc{};
+            check(adapter->GetDesc1(&desc), "GetDesc1");
+            measureMemory(adapter.Get(), jsonString(desc.Description),
+                          std::wstring(argv[2]) == L"scaled");
+            return 0;
+        }
         bool warp = false, smoke = false, reverse = false;
         const wchar_t *capturePath = nullptr;
         for (int i = 1; i < argc; ++i) {

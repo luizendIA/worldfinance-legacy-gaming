@@ -25,3 +25,5 @@ Build using the [instructions](../README.md). Run `legacy-lab.exe` twice and `le
 | RX 570 / Vulkan | terrain-v1 | Pending | No backend or feature capture yet |
 | RX 570 / GTA VI | commercial title | Untested | No files supplied or executed |
 | Other physical GPUs | terrain-v1 | Open for contributions | Supply driver, OS, rig details and raw JSON |
+
+[DXGI process memory measurements on the RX 570](vram-rx570/README.md)

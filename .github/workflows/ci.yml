@@ -25,6 +25,8 @@ jobs:
           if ((git rev-parse HEAD) -ne $env:GITHUB_SHA) { throw 'Unexpected revision' }
       - name: Validate evidence and website
         run: python tools/verify.py
+      - name: Validate VRAM capture phases and counters
+        run: python tools/vram_summary.py benchmarks/vram-rx570/raw
       - name: Configure
         run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
       - name: Build
