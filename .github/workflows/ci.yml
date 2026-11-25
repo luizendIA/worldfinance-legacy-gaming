@@ -25,6 +25,12 @@ jobs:
           if ((git rev-parse HEAD) -ne $env:GITHUB_SHA) { throw 'Unexpected revision' }
       - name: Validate evidence and website
         run: python tools/verify.py
+      - name: Validate dynamic-resolution traces
+        run: |
+          foreach ($group in 'pilot-8ms','5ms','8ms') {
+            python tools/dynamic_summary.py "benchmarks/dynamic-rx570/raw/$group"
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          }
       - name: Configure
         run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
       - name: Build

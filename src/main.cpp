@@ -91,7 +91,9 @@ void printRun(const FrameRun &r) {
     std::cout << "]}";
 }
 
-double compare(const FrameRun &a, const FrameRun &b) {
+} // namespace
+
+double compareImages(const FrameRun &a, const FrameRun &b) {
     auto validate = [](const FrameRun &f) {
         uint8_t lo = 255, hi = 0;
         for (size_t i = 0; i < f.rgba.size(); i += 4) {
@@ -115,6 +117,7 @@ double compare(const FrameRun &a, const FrameRun &b) {
     return std::sqrt(error / (a.rgba.size() / 4 * 3));
 }
 
+namespace {
 void capture(const wchar_t *path, const FrameRun &r) {
     std::ofstream out(std::filesystem::path(path), std::ios::binary);
     out.exceptions(std::ios::failbit | std::ios::badbit);
@@ -127,6 +130,53 @@ void capture(const wchar_t *path, const FrameRun &r) {
 
 int wmain(int argc, wchar_t **argv) {
     try {
+        if (argc > 1 && std::wstring(argv[1]) == L"--dynamic") {
+            bool reverse = false;
+            unsigned budgetMs = 8;
+            const wchar_t *images = nullptr;
+            for (int i = 2; i < argc; ++i) {
+                const std::wstring arg = argv[i];
+                if (arg == L"--reverse" && !reverse)
+                    reverse = true;
+                else if (arg == L"--budget-ms" && i + 1 < argc) {
+                    const std::wstring value = argv[++i];
+                    if (value != L"5" && value != L"8")
+                        throw std::runtime_error("Choose a 5 or 8 ms GPU budget");
+                    budgetMs = value == L"5" ? 5 : 8;
+                } else if (arg == L"--images" && i + 1 < argc && !images)
+                    images = argv[++i];
+                else
+                    throw std::runtime_error(
+                        "Usage: legacy-lab --dynamic [--budget-ms 5|8] [--reverse] [--images NEW_DIR]");
+            }
+            if (images && !std::filesystem::create_directory(images))
+                throw std::runtime_error("Choose a new image directory");
+            const auto adapter = selectAdapter(false);
+            DXGI_ADAPTER_DESC1 d{};
+            check(adapter->GetDesc1(&d), "GetDesc1");
+            Renderer renderer(adapter.Get());
+            auto run = renderer.dynamicResolution(reverse, budgetMs);
+            if (images) {
+                capture((std::filesystem::path(images) / "native.ppm").c_str(), run.nativePreview);
+                capture((std::filesystem::path(images) / "dynamic.ppm").c_str(), run.dynamicPreview);
+            }
+            std::cout << std::fixed << std::setprecision(6)
+                      << R"({"workload":"dynamic-terrain-v1","target_gpu_ms":)" << budgetMs
+                      << R"(,"adapter":)" << jsonString(d.Description) << R"(,"dynamic_first":)"
+                      << (reverse ? "true" : "false") << R"(,"frames":[)";
+            for (size_t i = 0; i < run.frames.size(); ++i) {
+                const auto &f = run.frames[i];
+                if (i)
+                    std::cout << ',';
+                std::cout << R"({"frame":)" << i << R"(,"width":)" << f.width << R"(,"height":)"
+                          << f.height << R"(,"terrain_passes":)" << f.passes << R"(,"native_gpu_ms":)"
+                          << f.nativeMs << R"(,"dynamic_gpu_ms":)" << f.dynamicMs
+                          << R"(,"native_wall_ms":)" << f.nativeWallMs << R"(,"dynamic_wall_ms":)"
+                          << f.dynamicWallMs << R"(,"rgb_rmse":)" << f.rmse << '}';
+            }
+            std::cout << "]}\n";
+            return 0;
+        }
         bool warp = false, smoke = false, reverse = false;
         const wchar_t *capturePath = nullptr;
         for (int i = 1; i < argc; ++i) {
@@ -157,7 +207,7 @@ int wmain(int argc, wchar_t **argv) {
         FrameRun first = profile(reverse), second = profile(!reverse);
         const FrameRun &full = reverse ? second : first;
         const FrameRun &low = reverse ? first : second;
-        double rmse = compare(full, low);
+        double rmse = compareImages(full, low);
         if (capturePath)
             capture(capturePath, full);
         std::cout << std::fixed << std::setprecision(6)
