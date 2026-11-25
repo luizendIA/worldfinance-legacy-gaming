@@ -1,0 +1,94 @@
+[
+  {
+    "workload": "victory-geometry-capture-v2",
+    "adapter": "Radeon RX 570 Series",
+    "software": false,
+    "shader_model": "6.5",
+    "mesh_shader_tier": 0,
+    "width": 1280,
+    "height": 720,
+    "vertices": 32,
+    "indices": 96,
+    "visible": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    },
+    "culled": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    }
+  },
+  {
+    "workload": "victory-geometry-capture-v2",
+    "adapter": "Radeon RX 570 Series",
+    "software": false,
+    "shader_model": "6.5",
+    "mesh_shader_tier": 0,
+    "width": 1280,
+    "height": 720,
+    "vertices": 32,
+    "indices": 96,
+    "visible": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    },
+    "culled": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    }
+  },
+  {
+    "workload": "victory-geometry-capture-v2",
+    "adapter": "Radeon RX 570 Series",
+    "software": false,
+    "shader_model": "6.5",
+    "mesh_shader_tier": 0,
+    "width": 1280,
+    "height": 720,
+    "vertices": 32,
+    "indices": 96,
+    "visible": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    },
+    "culled": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    }
+  },
+  {
+    "workload": "victory-geometry-capture-v2",
+    "adapter": "Radeon RX 570 Series",
+    "software": false,
+    "shader_model": "6.5",
+    "mesh_shader_tier": 0,
+    "width": 1280,
+    "height": 720,
+    "vertices": 32,
+    "indices": 96,
+    "visible": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    },
+    "culled": {
+      "pixels": 921600,
+      "id_mismatches": 0,
+      "depth_mismatches": 0,
+      "max_abs_depth_error": 0
+    }
+  }
+]

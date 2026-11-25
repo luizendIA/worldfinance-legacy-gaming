@@ -31,5 +31,9 @@ jobs:
         run: cmake --build build --config Release
       - name: Test
         run: ctest --test-dir build -C Release --output-on-failure
+      - name: Configure VIctory geometry probe
+        run: cmake -S benchmarks/victory-geometry-buffers -B probe-build -G "Visual Studio 17 2022" -A x64
+      - name: Build VIctory geometry probe
+        run: cmake --build probe-build --config Release
       - name: Hash executable
         run: (Get-FileHash -Algorithm SHA256 build/Release/legacy-lab.exe).Hash
