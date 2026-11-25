@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "workload": "terrain-vram-v1",
+  "adapter": "Radeon RX 570 Series",
+  "scene_width": 640,
+  "scene_height": 360,
+  "output_width": 1280,
+  "output_height": 720,
+  "frames": 32,
+  "samples": [
+    {
+      "stage": "before_allocation",
+      "elapsed_us": 117968,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_allocation",
+      "elapsed_us": 118515,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 119914,
+      "local_usage": 5361664,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 134898,
+      "local_usage": 5361664,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_render",
+      "elapsed_us": 149884,
+      "local_usage": 5361664,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_readback",
+      "elapsed_us": 155930,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_release",
+      "elapsed_us": 156089,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 181967,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 212918,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 243875,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 275880,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 307938,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 339916,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 371935,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 403942,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 435910,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 467965,
+      "local_usage": 5443584,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_device_release",
+      "elapsed_us": 485577,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "workload": "terrain-vram-v1",
+  "adapter": "Radeon RX 570 Series",
+  "scene_width": 1280,
+  "scene_height": 720,
+  "output_width": 1280,
+  "output_height": 720,
+  "frames": 32,
+  "samples": [
+    {
+      "stage": "before_allocation",
+      "elapsed_us": 132437,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_allocation",
+      "elapsed_us": 133102,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 134469,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 140008,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 159402,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 167972,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 176862,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "render_pending",
+      "elapsed_us": 182013,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_render",
+      "elapsed_us": 193442,
+      "local_usage": 8122368,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 581632,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_readback",
+      "elapsed_us": 203692,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_release",
+      "elapsed_us": 203853,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 238405,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 274314,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 308965,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 342560,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 376866,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 408232,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 439439,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 470662,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 501951,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "release_poll",
+      "elapsed_us": 533171,
+      "local_usage": 8204288,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 4468736,
+      "nonlocal_budget": 7814001357
+    },
+    {
+      "stage": "after_device_release",
+      "elapsed_us": 552768,
+      "local_usage": 0,
+      "local_budget": 3631994676,
+      "nonlocal_usage": 0,
+      "nonlocal_budget": 7814001357
+    }
+  ]
+}
