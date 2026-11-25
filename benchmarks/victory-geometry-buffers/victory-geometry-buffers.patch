@@ -1,0 +1,365 @@
+diff --git a/crates/victory-shader/examples/export_polaris.rs b/crates/victory-shader/examples/export_polaris.rs
+new file mode 100644
+index 0000000..d83fb7a
+--- /dev/null
++++ b/crates/victory-shader/examples/export_polaris.rs
+@@ -0,0 +1,10 @@
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let path = std::env::args_os().nth(1).ok_or("Usage: export_polaris NEW_DIRECTORY")?;
++    let dir = std::path::PathBuf::from(path);
++    std::fs::create_dir(&dir)?;
++    for (name, culled) in [("visible.dxil", false), ("culled.dxil", true)] {
++        let shader = victory_shader::emit::mesh_capture::synthetic_triangle(culled)?;
++        std::fs::write(dir.join(name), shader)?;
++    }
++    Ok(())
++}
+diff --git a/crates/victory-shader/src/emit/container.rs b/crates/victory-shader/src/emit/container.rs
+index 222deb7..950805a 100644
+--- a/crates/victory-shader/src/emit/container.rs
++++ b/crates/victory-shader/src/emit/container.rs
+@@ -169,7 +169,7 @@ pub(crate) struct Psv<'a> {
+ }
+ 
+ /// `PSV0` with runtime info version 2 (validator 1.6).
+-pub(crate) fn psv(p: &Psv) -> Vec<u8> {
++pub(crate) fn psv(p: &Psv, minor: u32) -> Vec<u8> {
+     let vectors = |els: &[SigElement]| {
+         els.iter()
+             .filter_map(|e| e.row)
+@@ -184,7 +184,8 @@ pub(crate) fn psv(p: &Psv) -> Vec<u8> {
+             out.extend(v.to_le_bytes());
+         }
+     };
+-    u32s(&mut out, &[48]);
++    let info_size = if minor >= 6 { 48 } else { 36 };
++    u32s(&mut out, &[info_size as u32]);
+     let mut info = [0u8; 48];
+     info[0] = u8::from(p.flag);
+     if p.stage == 0 {
+@@ -224,15 +225,14 @@ pub(crate) fn psv(p: &Psv) -> Vec<u8> {
+         info[12] = u8::from(p.flag);
+         info[26..28].copy_from_slice(&(max as u16).to_le_bytes());
+     }
+-    out.extend(info);
++    out.extend(&info[..info_size]);
+     u32s(&mut out, &[p.bindings.len() as u32]);
+     if !p.bindings.is_empty() {
+-        u32s(&mut out, &[24]);
++        let binding_size = if minor >= 6 { 24 } else { 16 };
++        u32s(&mut out, &[binding_size as u32]);
+         for b in p.bindings {
+-            u32s(
+-                &mut out,
+-                &[b.kind, b.space, b.register, b.register, b.dxil_kind, 0],
+-            );
++            let words = [b.kind, b.space, b.register, b.register, b.dxil_kind, 0];
++            u32s(&mut out, &words[..binding_size / 4]);
+         }
+     }
+     // Names of arbitrary semantics (system values use ""), then indices.
+diff --git a/crates/victory-shader/src/emit/lower.rs b/crates/victory-shader/src/emit/lower.rs
+index caab7ea..834c12f 100644
+--- a/crates/victory-shader/src/emit/lower.rs
++++ b/crates/victory-shader/src/emit/lower.rs
+@@ -86,9 +86,27 @@ enum Stop {
+ }
+ 
+ pub(crate) fn lower(parts: &Parts) -> Result<Lowered, ShaderError> {
++    lower_mode(parts, false)
++}
++
++pub(super) fn lower_capture(parts: &Parts) -> Result<Lowered, ShaderError> {
++    // Deliberately accept the standalone one-wave probe profile only.
++    let StageIo::Ms(ms) = &parts.native.io else {
++        return Err(ShaderError::Malformed("geometry capture requires a mesh program"));
++    };
++    if ms.threads != 32 || ms.max_vertices != 32 || ms.max_primitives != 32 ||
++        ms.topology != 2 || ms.lds_bytes != 0 || !parts.native.layout.is_empty() ||
++        !parts.native.used.is_empty() || parts.p.blocks.len() != 1 ||
++        parts.io.exports.len() != 2 || parts.native.wave64 {
++        return Err(ShaderError::Malformed("geometry capture requires the synthetic one-wave profile"));
++    }
++    lower_mode(parts, true)
++}
++
++fn lower_mode(parts: &Parts, capture: bool) -> Result<Lowered, ShaderError> {
+     let mut bad = HashMap::new();
+     loop {
+-        match Lower::new(parts, &bad).run() {
++        match Lower::new(parts, &bad, capture).run() {
+             Ok(l) => return Ok(l),
+             Err(Stop::Retry(v, why)) => {
+                 if bad.insert(v, why).is_some() {
+@@ -169,6 +187,7 @@ fn half_shift(width: u32) -> u32 {
+ }
+ 
+ struct Lower<'a> {
++    capture: bool,
+     s: Shader,
+     x: &'a Parts<'a>,
+     bad: &'a HashMap<Value, Why>,
+@@ -468,7 +487,7 @@ fn smem_dwords(name: &str) -> Option<u32> {
+ }
+ 
+ impl<'a> Lower<'a> {
+-    fn new(x: &'a Parts<'a>, bad: &'a HashMap<Value, Why>) -> Self {
++    fn new(x: &'a Parts<'a>, bad: &'a HashMap<Value, Why>, capture: bool) -> Self {
+         let p = x.p;
+         let mut phi_at = HashMap::new();
+         for (b, block) in p.blocks.iter().enumerate() {
+@@ -477,6 +496,7 @@ impl<'a> Lower<'a> {
+             }
+         }
+         let mut s = Shader::new(x.native.stage == HwStage::Ps);
++        if capture { s.minor = 5; }
+         s.inputs = x.inputs.clone();
+         s.outputs = x.outputs.clone();
+         let insts = || p.blocks.iter().flat_map(|b| &b.insts);
+@@ -577,6 +597,7 @@ impl<'a> Lower<'a> {
+             }
+         }
+         Lower {
++            capture,
+             s,
+             x,
+             bad,
+@@ -1245,7 +1266,7 @@ impl<'a> Lower<'a> {
+         self.cur = self.s.entry;
+         self.find_sections();
+         self.inputs()?;
+-        if let Some(mesh) = self.s.mesh {
++        if let Some(mesh) = self.s.mesh.filter(|_| !self.capture) {
+             self.mesh_prologue(mesh).map_err(|w| unsupported(0, w))?;
+             self.block[order[0]] = Some(self.cur);
+         }
+@@ -1305,6 +1326,18 @@ impl<'a> Lower<'a> {
+             self.exit(b)?;
+         }
+         self.fill_phis()?;
++        if self.capture {
++            if self.s.root_uavs.len() != 2 || !self.s.root_cbvs.is_empty() ||
++                !self.s.root_srvs.is_empty() || self.s.user_data != 0 ||
++                self.s.flags != flags::RAW_BUFFERS || self.s.memory.is_some() ||
++                !self.samplers.is_empty() {
++                return Err(unsupported(0, "capture requires exactly two export UAVs and no guest resources"));
++            }
++            self.s.mesh = None;
++            self.s.inputs.clear();
++            self.s.outputs.clear();
++            self.s.prims.clear();
++        }
+         let user_data = self.user_reads.values().copied().collect();
+         self.s.samplers = self.samplers.len() as u32;
+         let root_cbvs = self.s.root_cbvs.iter().map(|r| r.0).collect();
+@@ -9123,6 +9156,46 @@ impl<'a> Lower<'a> {
+             return Err("a compressed export");
+         }
+         let guard = self.guard(b, i)?;
++        if self.capture {
++            if guard.is_some() {
++                return Err("conditional export in geometry capture");
++            }
++            return match e.target {
++                Target::Position(0) => {
++                    let mut values = Vec::with_capacity(4);
++                    for value in e.values {
++                        values.push(self.i32_of(value.ok_or("incomplete position export")?)?);
++                    }
++                    self.capture_store(0, &values);
++                    Ok(())
++                }
++                Target::Primitive => {
++                    let v = e.values[0].ok_or("missing packed primitive")?;
++                    let word = self.i32_of(v)?;
++                    let zero = self.s.m.i32(0);
++                    let c = self.cur;
++                    let culled = self.s.m.cmp(c, pred::SLT, word, zero);
++                    let last = self.s.m.i32(31);
++                    let mask = self.s.m.i32(0x1ff);
++                    let mut indices = Vec::with_capacity(3);
++                    let mut reject = culled;
++                    for k in 0..3 {
++                        let shift = self.s.m.i32(10 * k);
++                        let field = self.s.m.bin(c, Bin::LShr, word, shift);
++                        let corner = self.s.m.bin(c, Bin::And, field, mask);
++                        let outside = self.s.m.cmp(c, pred::IUGT, corner, last);
++                        reject = self.s.m.bin(c, Bin::Or, reject, outside);
++                        indices.push(corner);
++                    }
++                    for index in &mut indices {
++                        *index = self.s.m.select(c, reject, zero, *index);
++                    }
++                    self.capture_store(1, &indices);
++                    Ok(())
++                }
++                _ => Err("unsupported geometry capture export"),
++            };
++        }
+         let mesh = self.s.mesh.is_some();
+         let c = self.cur;
+         // A pixel export whose lanes outside its guard the `done` export
+@@ -9327,6 +9400,21 @@ impl<'a> Lower<'a> {
+         Ok(())
+     }
+ 
++    fn capture_store(&mut self, slot: u8, values: &[V]) {
++        let handle = self.s.root_uav_handle(slot);
++        let lane = self.mesh_thread();
++        let stride = self.s.m.i32(values.len() as u32 * 4);
++        let c = self.cur;
++        let offset = self.s.m.bin(c, Bin::Mul, lane, stride);
++        let undef = self.s.m.undef(self.s.t.i32);
++        let mut args = vec![handle, offset, undef];
++        args.extend_from_slice(values);
++        args.resize(7, undef);
++        args.push(self.s.m.i8((1_u8 << values.len()) - 1));
++        args.push(self.s.m.i32(4));
++        self.s.op(c, "rawBufferStore.i32", Attr::NoUnwind, self.s.t.void, 140, &args);
++    }
++
+     /// Mesh: `exp prim` as the lane's primitive. Each corner takes ten
+     /// bits: a 9-bit vertex index and, above it, its edge flag (bits 9, 19
+     /// and 29), which only the console's edge-flag rasterisation reads and
+diff --git a/crates/victory-shader/src/emit/mesh_capture.rs b/crates/victory-shader/src/emit/mesh_capture.rs
+new file mode 100644
+index 0000000..9a42b5d
+--- /dev/null
++++ b/crates/victory-shader/src/emit/mesh_capture.rs
+@@ -0,0 +1,46 @@
++//! Geometry buffer output for a resource-free synthetic mesh shader.
++//! The upstream synthetic triangle uses exp pos0 and exp prim in each lane.
++
++use super::{container, lower};
++use crate::native::{HwStage, MeshIo, NativeProgram, StageIo};
++use crate::{ShaderError, io, ir, resource, structure};
++
++/// Builds the standalone Polaris test shader from original synthetic GFX10 instructions.
++/// One 32-lane group writes float4 positions at u0 and uint3 indices at u1, both in space 1.
++pub fn synthetic_triangle(culled: bool) -> Result<Vec<u8>, ShaderError> {
++    let primitive = (1 << 10) | (2 << 20) | (1 << 9) | (1 << 19) | (1 << 29)
++        | (u32::from(culled) << 31);
++    // Same synthetic instruction sequence as primitive_export_indices_drop_the_edge_flags.
++    let words = [
++        0xD765_0001u32, 0x0001_00C1, 0x3604_0281, 0x3606_0282, 0x7E04_0D02,
++        0x7E06_0D03, 0x1008_04F6, 0x0608_08F3, 0x100A_06F4, 0x060A_0AF3,
++        0x7E0C_02F0, 0x7E0E_02F2, 0x7E12_02FF, primitive, 0xF800_0941, 9,
++        0xF800_08CF, 0x0706_0504, 0xBF81_0000,
++    ];
++    let native = NativeProgram {
++        stage: HwStage::Ms,
++        wave64: false,
++        vgprs: 10,
++        layout: vec![],
++        used: vec![],
++        io: StageIo::Ms(MeshIo {
++            outputs: vec![], clip_cntl: 0, threads: 32, max_vertices: 32,
++            max_primitives: 32, topology: 2, lds_bytes: 0,
++        }),
++        code: words.iter().flat_map(|w| w.to_le_bytes()).collect(),
++    };
++    let position = container::SigElement {
++        name: "SV_Position".into(), index: 0, kind: 3, comp: 9, interp: 0,
++        row: Some(0), col: 0, cols: 4, usage: 0xF, half: false,
++    };
++    let p = ir::build(&native.patched_code(), native.wave64, native.vgprs)?;
++    let st = structure::structure(&p)?;
++    let res = resource::track(&p, &native.layout, native.stage, Some(&st))?;
++    let io = io::raise(&p, &native)?;
++    let parts = lower::Parts {
++        native: &native, p: &p, st: &st, io: &io, res: &res, inputs: vec![],
++        outputs: vec![position],
++        prims: vec![], mesh_stride: 32, view_marks: false,
++    };
++    lower::lower_capture(&parts).map(|l| l.dxil)
++}
+diff --git a/crates/victory-shader/src/emit/mod.rs b/crates/victory-shader/src/emit/mod.rs
+index 4e1fb2f..6bd7968 100644
+--- a/crates/victory-shader/src/emit/mod.rs
++++ b/crates/victory-shader/src/emit/mod.rs
+@@ -193,6 +193,7 @@ mod flow_tests;
+ #[cfg(all(windows, any(test, feature = "host")))]
+ pub mod host;
+ mod lower;
++pub mod mesh_capture;
+ mod rect;
+ pub use rect::rectangle_gs;
+ #[cfg(all(test, windows))]
+diff --git a/crates/victory-shader/src/emit/shader.rs b/crates/victory-shader/src/emit/shader.rs
+index e68e262..a74f0a0 100644
+--- a/crates/victory-shader/src/emit/shader.rs
++++ b/crates/victory-shader/src/emit/shader.rs
+@@ -80,6 +80,7 @@ pub(crate) struct Shader {
+     pub m: Module,
+     pub t: Types,
+     pub pixel: bool,
++    pub minor: u32,
+     pub inputs: Vec<SigElement>,
+     pub outputs: Vec<SigElement>,
+     /// A mesh shader's per-primitive outputs.
+@@ -164,6 +165,7 @@ impl Shader {
+                 res_ret,
+             },
+             pixel,
++            minor: 6,
+             inputs: Vec::new(),
+             outputs: Vec::new(),
+             prims: Vec::new(),
+@@ -325,6 +327,16 @@ impl Shader {
+             return h;
+         }
+         let r = self.m.i32(u32::from(slot));
++        if self.minor == 5 {
++            let class = self.m.i8(1);
++            let id = self.m.i32(self.root_uavs.len() as u32);
++            let uniform = self.m.bool(false);
++            let h = self.op(self.entry, "createHandle", Attr::ReadNone, self.t.handle,
++                            57, &[class, id, r, uniform]);
++            self.flags |= flags::RAW_BUFFERS;
++            self.root_uavs.push((slot, h));
++            return h;
++        }
+         let bind = [r, r, self.m.i32(ROOT_CBV_SPACE), self.m.i8(1)];
+         let bind = self.m.aggregate(self.t.bind, &bind);
+         let f = self.m.bool(false);
+@@ -851,8 +863,10 @@ impl Shader {
+         let ident = self.m.md_node(vec![Some(ident)]);
+         self.m.named_md("llvm.ident", vec![ident]);
+         let one = i32c(&mut self, 1);
++        let shader_minor = self.minor;
++        let minor = i32c(&mut self, shader_minor);
+         let six = i32c(&mut self, 6);
+-        let version = self.m.md_node(vec![Some(one), Some(six)]);
++        let version = self.m.md_node(vec![Some(one), Some(minor)]);
+         self.m.named_md("dx.version", vec![version]);
+         self.m.named_md("dx.valver", vec![version]);
+         // Program kinds: 0 pixel, 1 vertex, 2 geometry, 5 compute, 13 mesh.
+@@ -864,16 +878,16 @@ impl Shader {
+             (None, false) => ("vs", 1),
+         };
+         let name = self.m.md_str(name);
+-        let sm = self.m.md_node(vec![Some(name), Some(six), Some(six)]);
++        let sm = self.m.md_node(vec![Some(name), Some(six), Some(minor)]);
+         self.m.named_md("dx.shaderModel", vec![sm]);
+         self.m.named_md("dx.entryPoints", vec![entry]);
+ 
+         let bitcode = self.m.write();
+         let mut dxil = Vec::with_capacity(24 + bitcode.len());
+-        dxil.extend((kind << 16 | 0x66).to_le_bytes());
++        dxil.extend((kind << 16 | 0x60 | self.minor).to_le_bytes());
+         dxil.extend((((24 + bitcode.len()) / 4) as u32).to_le_bytes());
+         dxil.extend(b"DXIL");
+-        dxil.extend(0x106u32.to_le_bytes());
++        dxil.extend((0x100u32 | self.minor).to_le_bytes());
+         dxil.extend(16u32.to_le_bytes());
+         dxil.extend((bitcode.len() as u32).to_le_bytes());
+         dxil.extend(&bitcode);
+@@ -925,7 +939,7 @@ impl Shader {
+             bindings: &bindings,
+             threads: self.threads.unwrap_or_default(),
+             wave_size: self.wave_size,
+-        });
++        }, self.minor);
+         let hash = [0u8; 20];
+         let psg1 = container::signature(&self.prims, false);
+         let mut parts: Vec<(&[u8; 4], &[u8])> =
