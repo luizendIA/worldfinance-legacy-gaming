@@ -1,0 +1,1158 @@
+{
+  "workload": "api-terrain-720p-v1",
+  "adapter": "Radeon RX 570 Series",
+  "frames": [
+    {
+      "frame": 0,
+      "rgb_squared_error": 350,
+      "max_channel_error": 3,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.55168,
+        "wall_ms": 15.9732,
+        "rgba_sha256": "6058e14744a64227f4656ce4ccc757c740e87f12701c55dfd21d2afe2f4cf7fa"
+      },
+      "vulkan": {
+        "gpu_ms": 1.42128,
+        "wall_ms": 1.8213,
+        "rgba_sha256": "11345a1e91d1e9636e59f4ba00d1857e9926eb9cd7d75921a3333b7dd34b2e91"
+      }
+    },
+    {
+      "frame": 1,
+      "rgb_squared_error": 15728,
+      "max_channel_error": 92,
+      "pixels_over_1": 5,
+      "d3d11": {
+        "gpu_ms": 4.4888,
+        "wall_ms": 15.0309,
+        "rgba_sha256": "cde6e0e12cfc1a781da87d5271642a5696771e40e7ec968f09a45029f9a787db"
+      },
+      "vulkan": {
+        "gpu_ms": 2.08064,
+        "wall_ms": 2.3541,
+        "rgba_sha256": "650b8ebfc6c59da3cd937776e29ce3a9818557f87662cb770b89bff1ccb7d267"
+      }
+    },
+    {
+      "frame": 2,
+      "rgb_squared_error": 518,
+      "max_channel_error": 10,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.49632,
+        "wall_ms": 15.9869,
+        "rgba_sha256": "c702473a62314346fb8eba5a4632d6e95dc1bfe48c92df68ac96a6d9cfa21cef"
+      },
+      "vulkan": {
+        "gpu_ms": 1.35152,
+        "wall_ms": 1.6025,
+        "rgba_sha256": "9e7774dbd5858c41b78993da2717cda56b46cbf115199a7fee6bbedc720daf10"
+      }
+    },
+    {
+      "frame": 3,
+      "rgb_squared_error": 2837,
+      "max_channel_error": 31,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.52256,
+        "wall_ms": 16.0042,
+        "rgba_sha256": "07e1ea56d6ea50e813e8950bf3c0e33f6746005f916dccfb93a881cc5e0a6432"
+      },
+      "vulkan": {
+        "gpu_ms": 1.33312,
+        "wall_ms": 2.2337,
+        "rgba_sha256": "fefb9ec3eea65c36aff85a5a54e559cbb4fe2756af4e6d6e484b464f29c936d9"
+      }
+    },
+    {
+      "frame": 4,
+      "rgb_squared_error": 3059,
+      "max_channel_error": 40,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.5416,
+        "wall_ms": 15.5662,
+        "rgba_sha256": "77e1d19589279c699ae49402927a3ba61cc3ec22b1027dea7b2330033182375a"
+      },
+      "vulkan": {
+        "gpu_ms": 1.33824,
+        "wall_ms": 1.5968,
+        "rgba_sha256": "5dea624fc3c5284cc7f07491937d3fb7e8e11be26c323671e12b952b3e29f6f6"
+      }
+    },
+    {
+      "frame": 5,
+      "rgb_squared_error": 16900,
+      "max_channel_error": 75,
+      "pixels_over_1": 6,
+      "d3d11": {
+        "gpu_ms": 4.51968,
+        "wall_ms": 15.928,
+        "rgba_sha256": "5eb2bba8b6e3ef0b1546d5c812b475546c96cef72ced3bee7ed8a4236a2ca364"
+      },
+      "vulkan": {
+        "gpu_ms": 1.30288,
+        "wall_ms": 1.5925,
+        "rgba_sha256": "f7b7714886f4511df6663e74a0b5d3a7113dbb4f38ed518b2b641ba938d91ad7"
+      }
+    },
+    {
+      "frame": 6,
+      "rgb_squared_error": 36791,
+      "max_channel_error": 102,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 4.59696,
+        "wall_ms": 15.8797,
+        "rgba_sha256": "ef0570a95356217a29b91b02879524ea1ce7dfa835eacfddd70518f63cc75b92"
+      },
+      "vulkan": {
+        "gpu_ms": 1.31664,
+        "wall_ms": 1.7084,
+        "rgba_sha256": "dc1507c79fa250f0b5930927b8795da19a84848409558174f38babbcedabbe80"
+      }
+    },
+    {
+      "frame": 7,
+      "rgb_squared_error": 542,
+      "max_channel_error": 9,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.5776,
+        "wall_ms": 15.8552,
+        "rgba_sha256": "fe3b4ff4b0dc9d251f2ae495eb24f448212a53db16f29b3e669b04af779fc646"
+      },
+      "vulkan": {
+        "gpu_ms": 1.32112,
+        "wall_ms": 1.7127,
+        "rgba_sha256": "79b9d400d864d346073dd8f302215288b8bff61fae03710f6889505a40612eea"
+      }
+    },
+    {
+      "frame": 8,
+      "rgb_squared_error": 346,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 5.67968,
+        "wall_ms": 16.0316,
+        "rgba_sha256": "3d69037b9115f1eb674d7cfe4eb1a96b129c6909aff696b40fd5685dd70fa93a"
+      },
+      "vulkan": {
+        "gpu_ms": 1.27936,
+        "wall_ms": 1.6291,
+        "rgba_sha256": "5b2974907dfda9b9b806c6c95c1c799781575d1fefbbe3092de58826b7c0382f"
+      }
+    },
+    {
+      "frame": 9,
+      "rgb_squared_error": 11293,
+      "max_channel_error": 69,
+      "pixels_over_1": 6,
+      "d3d11": {
+        "gpu_ms": 7.06008,
+        "wall_ms": 15.3428,
+        "rgba_sha256": "83bed2146e58972570a897f73c5855d8b6b20df970455265c6dccb246ff14f43"
+      },
+      "vulkan": {
+        "gpu_ms": 1.23984,
+        "wall_ms": 1.6002,
+        "rgba_sha256": "d618d96fa999b7ca47a0047bf04850f038239846fd9b11d29e09fdd88323f4e8"
+      }
+    },
+    {
+      "frame": 10,
+      "rgb_squared_error": 312,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 5.53136,
+        "wall_ms": 15.6056,
+        "rgba_sha256": "b528553d0a2e0f451ae12a8c26b7980b64b4baca0e4f75c827362bf88f0a64bc"
+      },
+      "vulkan": {
+        "gpu_ms": 1.66688,
+        "wall_ms": 1.8872,
+        "rgba_sha256": "e43929b83d238e70d4156f67524cc1bc3d039770bf5c9f2e8a168ce41da79d33"
+      }
+    },
+    {
+      "frame": 11,
+      "rgb_squared_error": 10745,
+      "max_channel_error": 81,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 5.32936,
+        "wall_ms": 16.141,
+        "rgba_sha256": "1aef90de93de64a3597873cd1b97c3a0e1234d9f05d74b13b51eaadb60368095"
+      },
+      "vulkan": {
+        "gpu_ms": 1.25568,
+        "wall_ms": 1.5444,
+        "rgba_sha256": "d5b0a0713ab29d3c5b88d1c73496ca4883243415d45581d4eb5576ef3772c54a"
+      }
+    },
+    {
+      "frame": 12,
+      "rgb_squared_error": 6144,
+      "max_channel_error": 61,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 5.54524,
+        "wall_ms": 16.0659,
+        "rgba_sha256": "55487e67d06af8860ea8d876179220c9e77bc1ac45832f903e098492299e1c4c"
+      },
+      "vulkan": {
+        "gpu_ms": 1.29136,
+        "wall_ms": 1.6123,
+        "rgba_sha256": "f18d18fdd24ebf9bf075e8e3ad300040bcd829db6b7e686a5b3772044c89210c"
+      }
+    },
+    {
+      "frame": 13,
+      "rgb_squared_error": 368,
+      "max_channel_error": 2,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 2.37632,
+        "wall_ms": 15.4988,
+        "rgba_sha256": "4818a7c8bde2518f0916dd6f603a3aee382e366fab0c9979d13d5f4d33e27536"
+      },
+      "vulkan": {
+        "gpu_ms": 1.26512,
+        "wall_ms": 1.5058,
+        "rgba_sha256": "10286d24ce6c828ce276abf050c05aaa1843acf600d80be538bfee4c416fa32d"
+      }
+    },
+    {
+      "frame": 14,
+      "rgb_squared_error": 2667,
+      "max_channel_error": 39,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.67424,
+        "wall_ms": 16.0321,
+        "rgba_sha256": "1f6bf48bd4b64af3eec26ff9ff20dff0cbe59d4d77f6a93338087bf7763e99bd"
+      },
+      "vulkan": {
+        "gpu_ms": 1.25776,
+        "wall_ms": 1.5224,
+        "rgba_sha256": "d2f6079c18837cdc146aa11f6c21536f8932098318ba443712f2a7c527298ade"
+      }
+    },
+    {
+      "frame": 15,
+      "rgb_squared_error": 933,
+      "max_channel_error": 19,
+      "pixels_over_1": 6,
+      "d3d11": {
+        "gpu_ms": 4.67872,
+        "wall_ms": 16.0155,
+        "rgba_sha256": "46f3040105478c18d6dd130c958d085f12673fe06904ddcd65d3542bb60522b6"
+      },
+      "vulkan": {
+        "gpu_ms": 1.23856,
+        "wall_ms": 1.6108,
+        "rgba_sha256": "b584c465de1f841218eb8ac7c4893c824df4ce6758b0e3db0f56c7db544d68b8"
+      }
+    },
+    {
+      "frame": 16,
+      "rgb_squared_error": 1635,
+      "max_channel_error": 27,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.63104,
+        "wall_ms": 15.9824,
+        "rgba_sha256": "29169f6d88c9a682519af92f5876632784569f9ac35584ad580f52d1167ad79a"
+      },
+      "vulkan": {
+        "gpu_ms": 1.20992,
+        "wall_ms": 1.4937,
+        "rgba_sha256": "58eef2bfcea5e99f3f33d6845273698141a78681d8190916caba4d5f62955d6c"
+      }
+    },
+    {
+      "frame": 17,
+      "rgb_squared_error": 314,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 4.67072,
+        "wall_ms": 16.0132,
+        "rgba_sha256": "30ac750c9d8f2b90a29ee43f0df3debf297ba609b35c4024dc80d0996d5202d0"
+      },
+      "vulkan": {
+        "gpu_ms": 1.2,
+        "wall_ms": 1.5663,
+        "rgba_sha256": "d4abc34516f217c91496c25ae4b2fddf426904952d3bff8acb6b9cf8137b5f73"
+      }
+    },
+    {
+      "frame": 18,
+      "rgb_squared_error": 1080,
+      "max_channel_error": 19,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.60528,
+        "wall_ms": 16.0125,
+        "rgba_sha256": "0679ae119a7f417ec716b55229887116ebeae46ae902168854a71658acd9d734"
+      },
+      "vulkan": {
+        "gpu_ms": 1.17968,
+        "wall_ms": 1.4214,
+        "rgba_sha256": "962d7940104549e760bf21db909eafea01589a09a91b00b9a58759dc424e9468"
+      }
+    },
+    {
+      "frame": 19,
+      "rgb_squared_error": 13307,
+      "max_channel_error": 91,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.67616,
+        "wall_ms": 15.9276,
+        "rgba_sha256": "b38c672aa9bc9dcd43eaa533e5f3adf686cf9a495bf4d7144bf0a08f31141654"
+      },
+      "vulkan": {
+        "gpu_ms": 1.1912,
+        "wall_ms": 1.5546,
+        "rgba_sha256": "bce334c1de632971eb631ebe7128365eb2fe40fa8495f6d272423c4570a2bf1f"
+      }
+    },
+    {
+      "frame": 20,
+      "rgb_squared_error": 13338,
+      "max_channel_error": 91,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.54736,
+        "wall_ms": 15.5113,
+        "rgba_sha256": "a30d5409f175578ead91c7e729ba81b56ba95664fcb130291e3a4f9c390abee4"
+      },
+      "vulkan": {
+        "gpu_ms": 1.22464,
+        "wall_ms": 1.5522,
+        "rgba_sha256": "0b9a8bd0dac3985a02eaf01aa8430bc0119900a02ff466c8289478b740778a95"
+      }
+    },
+    {
+      "frame": 21,
+      "rgb_squared_error": 998,
+      "max_channel_error": 17,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 2.41648,
+        "wall_ms": 15.5783,
+        "rgba_sha256": "987e04cbcaecc3156f975242985360db7b86ea055b0a791befad3b30d62c8b72"
+      },
+      "vulkan": {
+        "gpu_ms": 1.59984,
+        "wall_ms": 1.9262,
+        "rgba_sha256": "e623fc1f28b8ac51d2cd6aee056d68fca20cae8374f5da2517a2b35195a567da"
+      }
+    },
+    {
+      "frame": 22,
+      "rgb_squared_error": 343,
+      "max_channel_error": 5,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.64128,
+        "wall_ms": 15.0049,
+        "rgba_sha256": "ebc9c4db0d63251fa9ccf89e27da03bcdf5b31e7695f56e3067f6493bd5a3138"
+      },
+      "vulkan": {
+        "gpu_ms": 1.16752,
+        "wall_ms": 1.5371,
+        "rgba_sha256": "f56b946f686e79a4711861166b5dcb4ca7a2b837e8b39ad50127acdd9e5f8bcd"
+      }
+    },
+    {
+      "frame": 23,
+      "rgb_squared_error": 2068,
+      "max_channel_error": 30,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 4.77984,
+        "wall_ms": 16.0358,
+        "rgba_sha256": "a206dabb6e3d3c7a707df1ce34410c79f54670bcafce705cc4b3c25a8aaa2f78"
+      },
+      "vulkan": {
+        "gpu_ms": 1.19312,
+        "wall_ms": 2.0123,
+        "rgba_sha256": "bd2ae4c8ec14c06f21233c3c656cb5a89354fb5af4479ae6c585e3ca8d97058c"
+      }
+    },
+    {
+      "frame": 24,
+      "rgb_squared_error": 345,
+      "max_channel_error": 3,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 12.13392,
+        "wall_ms": 15.9646,
+        "rgba_sha256": "0b354ce445e9ed3b2ff23b4c93942fbeb53e642fb52206313cc118d69606b77b"
+      },
+      "vulkan": {
+        "gpu_ms": 3.2624,
+        "wall_ms": 3.585,
+        "rgba_sha256": "25053ab333498a7281a202af10b725dc77fd1cdac4a26577cc9a9fd6a1e61a9e"
+      }
+    },
+    {
+      "frame": 25,
+      "rgb_squared_error": 12703,
+      "max_channel_error": 80,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 6.47856,
+        "wall_ms": 15.9709,
+        "rgba_sha256": "3eff8a61a25fb5cefbf19f41b0327e3db72ead695d8a231e08f6b4f232cefb5e"
+      },
+      "vulkan": {
+        "gpu_ms": 3.19216,
+        "wall_ms": 3.4498,
+        "rgba_sha256": "300872a21eabd73f3ff1ba1c4f6127b4da40509c444a3da1eb4f3101f505a304"
+      }
+    },
+    {
+      "frame": 26,
+      "rgb_squared_error": 6228,
+      "max_channel_error": 53,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 11.71152,
+        "wall_ms": 15.994,
+        "rgba_sha256": "113559145b3706b43c4fbd345bc06de2694198c4a1bb4e89e967ffa5cd51d488"
+      },
+      "vulkan": {
+        "gpu_ms": 3.13616,
+        "wall_ms": 3.4178,
+        "rgba_sha256": "cb0665e4dcd858728fa540d07dd4a4084cc31d39d1bb7d77e49d0e490f234711"
+      }
+    },
+    {
+      "frame": 27,
+      "rgb_squared_error": 7729,
+      "max_channel_error": 68,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 6.04816,
+        "wall_ms": 16.0301,
+        "rgba_sha256": "613af691a0322a491b811a13614afa2b7210ffb56f7a86bcff8cb3dc8290ec83"
+      },
+      "vulkan": {
+        "gpu_ms": 3.83728,
+        "wall_ms": 4.1378,
+        "rgba_sha256": "f280c908702b0e9c865e1febc3cc047796f8d3a139aeacdd222c1b18d16249f2"
+      }
+    },
+    {
+      "frame": 28,
+      "rgb_squared_error": 13121,
+      "max_channel_error": 90,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 11.2144,
+        "wall_ms": 16.0297,
+        "rgba_sha256": "230345e3eeb13a2406a820afba0db4b846f780dbff875af20edb6cca59a46c0d"
+      },
+      "vulkan": {
+        "gpu_ms": 3.06656,
+        "wall_ms": 3.3283,
+        "rgba_sha256": "71c8f668b7126a8b07c50b3979cd43dc636126a623c7809f12431ccc10e80610"
+      }
+    },
+    {
+      "frame": 29,
+      "rgb_squared_error": 6658,
+      "max_channel_error": 60,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 8.87072,
+        "wall_ms": 16.0073,
+        "rgba_sha256": "ab3ef3f514563c40d9acb953441cba4cf196dd837ebe3de32232dfd696ef5eb5"
+      },
+      "vulkan": {
+        "gpu_ms": 3.15056,
+        "wall_ms": 3.4091,
+        "rgba_sha256": "bdcd06f7f0d74a7db446344a26a0f97d98a6676c16379fb01afb64c66e66237d"
+      }
+    },
+    {
+      "frame": 30,
+      "rgb_squared_error": 1477,
+      "max_channel_error": 27,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 12.02972,
+        "wall_ms": 16.0047,
+        "rgba_sha256": "bc213ec9d1f425c7bea658018dba241d3b411a347ccabc90d1e5f027f7988362"
+      },
+      "vulkan": {
+        "gpu_ms": 3.10448,
+        "wall_ms": 3.3883,
+        "rgba_sha256": "5d5098a3dbf7a4bb4e458a82714b45e1b543a3aba642cf0b24aa8cc84f043c60"
+      }
+    },
+    {
+      "frame": 31,
+      "rgb_squared_error": 375,
+      "max_channel_error": 4,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.83216,
+        "wall_ms": 15.9934,
+        "rgba_sha256": "1c929ab4155f913c43a0397bac1385d515801c58836a295792110282acdfab1c"
+      },
+      "vulkan": {
+        "gpu_ms": 3.10048,
+        "wall_ms": 3.416,
+        "rgba_sha256": "2351827988aa49e0cff498f36222abf1b03cb12053613b5de25f6449f65575d8"
+      }
+    },
+    {
+      "frame": 32,
+      "rgb_squared_error": 9659,
+      "max_channel_error": 61,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.24672,
+        "wall_ms": 15.4828,
+        "rgba_sha256": "6345995245f921b63deff58c337b334afc23723246706ef695dbe5dbf510a390"
+      },
+      "vulkan": {
+        "gpu_ms": 3.4688,
+        "wall_ms": 3.8194,
+        "rgba_sha256": "ba641ad177f624f44c721ef6189ef1f499ebc8ab00f7ce4a27317216feecc77b"
+      }
+    },
+    {
+      "frame": 33,
+      "rgb_squared_error": 10457,
+      "max_channel_error": 80,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.17344,
+        "wall_ms": 15.6778,
+        "rgba_sha256": "014cd33c12dafe14c41661807b986266c048133556063bf82519a82241c52bb0"
+      },
+      "vulkan": {
+        "gpu_ms": 3.08192,
+        "wall_ms": 3.3235,
+        "rgba_sha256": "ede5a3bb2b02bbd55225d67ecb052364dce25d9bbb7da0ce8c30d7e59907761b"
+      }
+    },
+    {
+      "frame": 34,
+      "rgb_squared_error": 23847,
+      "max_channel_error": 94,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 3.85504,
+        "wall_ms": 15.4083,
+        "rgba_sha256": "646a8e2a65b9d836dee0f824c5a34f9d322b10db3225468b5e292e5891d1cf5d"
+      },
+      "vulkan": {
+        "gpu_ms": 3.08592,
+        "wall_ms": 3.3458,
+        "rgba_sha256": "247851d21a6bc92ba703bd5f3b3bad4d29f7284b6d97ccd13093280652630fad"
+      }
+    },
+    {
+      "frame": 35,
+      "rgb_squared_error": 363,
+      "max_channel_error": 3,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 3.9152,
+        "wall_ms": 15.0791,
+        "rgba_sha256": "7198b1cc02fd834cfe57a22f583cac6695b4fdc21f83c2eff536cb6f5fea828b"
+      },
+      "vulkan": {
+        "gpu_ms": 3.11808,
+        "wall_ms": 3.4027,
+        "rgba_sha256": "62e5326b87a4c42b519dcacc7ecac42c8c9faffb4879cf007cf408d56ee48bec"
+      }
+    },
+    {
+      "frame": 36,
+      "rgb_squared_error": 10686,
+      "max_channel_error": 81,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 3.90016,
+        "wall_ms": 15.1413,
+        "rgba_sha256": "057b3d7872c520e5776103a38e453004d675591393de1032a65321ba82c172a5"
+      },
+      "vulkan": {
+        "gpu_ms": 3.11296,
+        "wall_ms": 3.496,
+        "rgba_sha256": "57b967fd88877b1cc1d81864a708bf74cfe2190644c32bc106afa7133ea95453"
+      }
+    },
+    {
+      "frame": 37,
+      "rgb_squared_error": 3546,
+      "max_channel_error": 45,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.24896,
+        "wall_ms": 15.251,
+        "rgba_sha256": "29ada208114e626cd3d31dc53660bc23d8c0c71bdaea3c1b2d824949783acbf5"
+      },
+      "vulkan": {
+        "gpu_ms": 3.1168,
+        "wall_ms": 3.3907,
+        "rgba_sha256": "c049b3ab71388ab8fe82c9bd1e5d01343c0486adc60432038498a91ba24828d2"
+      }
+    },
+    {
+      "frame": 38,
+      "rgb_squared_error": 5324,
+      "max_channel_error": 56,
+      "pixels_over_1": 5,
+      "d3d11": {
+        "gpu_ms": 6.8128,
+        "wall_ms": 16.1184,
+        "rgba_sha256": "85f5acac538379242a59cf2fb6f4a5069ebba5b2e40db5d20274396824a2d1af"
+      },
+      "vulkan": {
+        "gpu_ms": 3.14128,
+        "wall_ms": 3.4651,
+        "rgba_sha256": "cf27ee222b200b8aef241a83802b98de03b686a7f83fe692c93f187a3b364369"
+      }
+    },
+    {
+      "frame": 39,
+      "rgb_squared_error": 10254,
+      "max_channel_error": 79,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.24848,
+        "wall_ms": 15.7035,
+        "rgba_sha256": "9806d98f47491b76d7b816a94025174f619e805039a6c22eda3f3b8c7aa26c29"
+      },
+      "vulkan": {
+        "gpu_ms": 3.12224,
+        "wall_ms": 3.5106,
+        "rgba_sha256": "ea9b131addef16da9d9323b52db6a7a8017a98b17b4956e9761763c42c83f892"
+      }
+    },
+    {
+      "frame": 40,
+      "rgb_squared_error": 7167,
+      "max_channel_error": 66,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 6.87568,
+        "wall_ms": 15.1,
+        "rgba_sha256": "1baf6defaee1b4bed14de9a9fd1dbfd79d7a6d33f2334fe64aeaaaa1f7a0a7d8"
+      },
+      "vulkan": {
+        "gpu_ms": 3.12864,
+        "wall_ms": 3.4723,
+        "rgba_sha256": "013d1fa243593514bd53ed02237979c4fc943990f3fcb15f39f6a05a66831aa2"
+      }
+    },
+    {
+      "frame": 41,
+      "rgb_squared_error": 362,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 4.24288,
+        "wall_ms": 15.1079,
+        "rgba_sha256": "572c5cdf1b166c0a0356a6b4441a26c1a849471c9d0225962702a75372ac2896"
+      },
+      "vulkan": {
+        "gpu_ms": 3.48208,
+        "wall_ms": 3.7881,
+        "rgba_sha256": "4fd4dd20a73a02c48e98bbc48e26f7e011bace0fe8d940ef470a833081f84042"
+      }
+    },
+    {
+      "frame": 42,
+      "rgb_squared_error": 389,
+      "max_channel_error": 3,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 6.81888,
+        "wall_ms": 15.6719,
+        "rgba_sha256": "171e1135c0df086eb294d76987c722a0ec3a84d7a13fe4db56e7a1bdb02e5ce8"
+      },
+      "vulkan": {
+        "gpu_ms": 3.09808,
+        "wall_ms": 3.3817,
+        "rgba_sha256": "9eb4153cadbee8aec72a8dcf2b28a0d4270664068a1b099ab6323f361681ec66"
+      }
+    },
+    {
+      "frame": 43,
+      "rgb_squared_error": 8371,
+      "max_channel_error": 54,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.20864,
+        "wall_ms": 15.1017,
+        "rgba_sha256": "f86bcabadb9a01a1b122f329f797819ef8fc9357c244e9a19121f3a2f0a1f235"
+      },
+      "vulkan": {
+        "gpu_ms": 3.11264,
+        "wall_ms": 3.5336,
+        "rgba_sha256": "779ed4ceedec614875859541f4f9f7578c9b862a6ddc246dc2b0ee03f78e21f5"
+      }
+    },
+    {
+      "frame": 44,
+      "rgb_squared_error": 320,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 12.59756,
+        "wall_ms": 16.1292,
+        "rgba_sha256": "1d7a3ab9b5a080df8421b606332ad16e9caedcd3318ab2e6365ee91ecd8a5c62"
+      },
+      "vulkan": {
+        "gpu_ms": 3.09488,
+        "wall_ms": 3.4221,
+        "rgba_sha256": "75703e669a6b3a2b429ab5bd4548e7cf072ea886dacbb8541c4e12b5478fd0b3"
+      }
+    },
+    {
+      "frame": 45,
+      "rgb_squared_error": 1156,
+      "max_channel_error": 19,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 6.4432,
+        "wall_ms": 15.1229,
+        "rgba_sha256": "fad04c1d95298db65f32424291ff26bb55f4650d2bd5179999919decd7bd29aa"
+      },
+      "vulkan": {
+        "gpu_ms": 3.11504,
+        "wall_ms": 3.4977,
+        "rgba_sha256": "8e7fdca9bb95a2abc07530ca5f1b995778617fdd7f2e6e537b9c5e4e97b79cee"
+      }
+    },
+    {
+      "frame": 46,
+      "rgb_squared_error": 1317,
+      "max_channel_error": 25,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 12.50592,
+        "wall_ms": 16.0567,
+        "rgba_sha256": "50e7b258cc3ba5242627ab38cd35831a0112ac50250411adceab629007aba093"
+      },
+      "vulkan": {
+        "gpu_ms": 3.16704,
+        "wall_ms": 3.4013,
+        "rgba_sha256": "debf8c9ae961359b0749d6ecf1674c352f5c3e42b81bfea772a4c4cf0ebf69ca"
+      }
+    },
+    {
+      "frame": 47,
+      "rgb_squared_error": 7286,
+      "max_channel_error": 52,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 6.47424,
+        "wall_ms": 15.0054,
+        "rgba_sha256": "977d609fa449e9b144257ae4f3b03365845309d6225077dd12df65ec1cc0ff46"
+      },
+      "vulkan": {
+        "gpu_ms": 3.14336,
+        "wall_ms": 3.4821,
+        "rgba_sha256": "90594296c63e75f40e5ab926f4a9e3845123f0b8cb70f8dc99535c2c4364e508"
+      }
+    },
+    {
+      "frame": 48,
+      "rgb_squared_error": 1017,
+      "max_channel_error": 15,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.54496,
+        "wall_ms": 15.7055,
+        "rgba_sha256": "8f90c00a136576878c4d23db18b71dd9f2ff298a59d63364e094a6a7940f8a75"
+      },
+      "vulkan": {
+        "gpu_ms": 1.1704,
+        "wall_ms": 1.5565,
+        "rgba_sha256": "58f5b6713f348dfce1328d397b49a2f9831cd26d0a3b3ee3f60fbc2ae3486d83"
+      }
+    },
+    {
+      "frame": 49,
+      "rgb_squared_error": 1136,
+      "max_channel_error": 18,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.5896,
+        "wall_ms": 15.256,
+        "rgba_sha256": "a97c53b2bd31e1da9d4344f08adc189d6793357b61653b07060f2335c8e60c60"
+      },
+      "vulkan": {
+        "gpu_ms": 1.14688,
+        "wall_ms": 1.4294,
+        "rgba_sha256": "d9fc5c64da57d903316e6140610a65b6316566e4f7fd7fc68718cca621458bdd"
+      }
+    },
+    {
+      "frame": 50,
+      "rgb_squared_error": 5118,
+      "max_channel_error": 51,
+      "pixels_over_1": 6,
+      "d3d11": {
+        "gpu_ms": 2.39008,
+        "wall_ms": 15.0607,
+        "rgba_sha256": "e6d54e40c76f8cfdede4e759d77a72101608809e19cb42767cbe3f3415dfea7a"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13312,
+        "wall_ms": 1.4798,
+        "rgba_sha256": "334b9d1688d12d2f9f99bd453f247ea1b366fb0f41c254cc83105a44d8b2d429"
+      }
+    },
+    {
+      "frame": 51,
+      "rgb_squared_error": 9460,
+      "max_channel_error": 67,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 4.69984,
+        "wall_ms": 15.3025,
+        "rgba_sha256": "dfeeb85aa96fc3b2d10a7d14a89d33fac6eb07e01a87e69c03a5531aa8bec1b7"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12816,
+        "wall_ms": 1.3858,
+        "rgba_sha256": "c1bf74b1f44b14312eb8df0adda570c71b1ace7d8d81744c017e68298d6aefcf"
+      }
+    },
+    {
+      "frame": 52,
+      "rgb_squared_error": 18623,
+      "max_channel_error": 76,
+      "pixels_over_1": 5,
+      "d3d11": {
+        "gpu_ms": 2.47536,
+        "wall_ms": 15.1493,
+        "rgba_sha256": "b5c626b45e595f1247144ab269dd75a15c070502f4ed253745b478eeca5517b1"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13824,
+        "wall_ms": 1.4195,
+        "rgba_sha256": "60f7611b3d230a488327e384702f141c9a96dcfc12c17ecdc6665501b80e1a4c"
+      }
+    },
+    {
+      "frame": 53,
+      "rgb_squared_error": 692,
+      "max_channel_error": 14,
+      "pixels_over_1": 6,
+      "d3d11": {
+        "gpu_ms": 4.824,
+        "wall_ms": 16.0414,
+        "rgba_sha256": "5afc399d02eac45b41cab01bc69a9538b3b694919b7f4243d6cde4bae659dd4e"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13984,
+        "wall_ms": 1.5277,
+        "rgba_sha256": "ffe4bbab8266df468e0caca9436659eccab7f548c9dd10f62a690e1d6a3326ae"
+      }
+    },
+    {
+      "frame": 54,
+      "rgb_squared_error": 573,
+      "max_channel_error": 12,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.59856,
+        "wall_ms": 16.0952,
+        "rgba_sha256": "d13a0a67af4ee4e11d65d872edce68ee05390b65fd6094301b087462efef9803"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13856,
+        "wall_ms": 1.5,
+        "rgba_sha256": "48bb93da710f16ca81b9fb46018ec251f9ea26f02e0b16705e7091b5788a8448"
+      }
+    },
+    {
+      "frame": 55,
+      "rgb_squared_error": 5367,
+      "max_channel_error": 56,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.58224,
+        "wall_ms": 15.2719,
+        "rgba_sha256": "4aa6cf343a6e126fc0fc2e203d755a4b50c8ce85cf1fd1dac10c32eb8c93e1f9"
+      },
+      "vulkan": {
+        "gpu_ms": 1.49808,
+        "wall_ms": 1.7258,
+        "rgba_sha256": "1844d1f4050864120406e8a4de8538a5a114eb622e482b0ab0ef348546045d8d"
+      }
+    },
+    {
+      "frame": 56,
+      "rgb_squared_error": 351,
+      "max_channel_error": 2,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.59056,
+        "wall_ms": 16.0292,
+        "rgba_sha256": "c06441d27d2456d20697b5808bbfe17bec83d85e8634dde869951d6dc88e4298"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13008,
+        "wall_ms": 1.3889,
+        "rgba_sha256": "f62e34b77e03a4c1862679b3c606d38092d0c9875440a5f8d7a9a4991f4fe998"
+      }
+    },
+    {
+      "frame": 57,
+      "rgb_squared_error": 373,
+      "max_channel_error": 3,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.63904,
+        "wall_ms": 15.0259,
+        "rgba_sha256": "8fcbd2028814b8623a7f98d4479a7e614efe15437bafd075574c7667da8fab88"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12736,
+        "wall_ms": 1.3876,
+        "rgba_sha256": "bb54c452bf7af19cfa01184aa5378a2fb2f783bc72fc678e4c49a912629f29d9"
+      }
+    },
+    {
+      "frame": 58,
+      "rgb_squared_error": 5498,
+      "max_channel_error": 57,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.78832,
+        "wall_ms": 15.6201,
+        "rgba_sha256": "a2aa1e2bfa1a2a336ee372aadf69b6f2062857416aad26855f23c66f155c9835"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13776,
+        "wall_ms": 1.3876,
+        "rgba_sha256": "40882aa5345dae2567f21c1b610ca8005e12e577309c490b4729db9f55214897"
+      }
+    },
+    {
+      "frame": 59,
+      "rgb_squared_error": 358,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 5.30976,
+        "wall_ms": 16.1185,
+        "rgba_sha256": "f9bbde4806958f2200b79250c09c93760cd619c2aa2dc9dbcabce788e53eef96"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13584,
+        "wall_ms": 1.4521,
+        "rgba_sha256": "14788f746e4a9528e28c9bcecba0c4e7e41ee703c198dbfba7f53ffb02d7816b"
+      }
+    },
+    {
+      "frame": 60,
+      "rgb_squared_error": 1111,
+      "max_channel_error": 22,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.57568,
+        "wall_ms": 14.9588,
+        "rgba_sha256": "06bccd29292c1265a211a881cb473446381e924a1c1e9ec42c888978ad9e0b0d"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13536,
+        "wall_ms": 1.3904,
+        "rgba_sha256": "600d15510eba6720b061251f094c2f716ed177934ce206362fea059bc0b1a759"
+      }
+    },
+    {
+      "frame": 61,
+      "rgb_squared_error": 22113,
+      "max_channel_error": 91,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 5.14344,
+        "wall_ms": 15.1144,
+        "rgba_sha256": "31e231cca95cec37b0000602d5fa6b8f35692be5faf47dfd8fb641681a9b8e89"
+      },
+      "vulkan": {
+        "gpu_ms": 1.1336,
+        "wall_ms": 1.4658,
+        "rgba_sha256": "de9c7cd21458c3151963838824f5ee5aa337ac041c1b9174e6951b3f79e24541"
+      }
+    },
+    {
+      "frame": 62,
+      "rgb_squared_error": 394,
+      "max_channel_error": 2,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.54656,
+        "wall_ms": 15.22,
+        "rgba_sha256": "bc00a6ce8e39bf3d2116d20359799254e4aacce84dab5647253acebff45c6d6c"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12288,
+        "wall_ms": 1.52,
+        "rgba_sha256": "3d9667752693d4f30598b441bb18bc3ef019afe863f1ca173490ab7abef2c1a1"
+      }
+    },
+    {
+      "frame": 63,
+      "rgb_squared_error": 403,
+      "max_channel_error": 5,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.60368,
+        "wall_ms": 15.1878,
+        "rgba_sha256": "f6140caab3eafb1c20f7732935db70eced17711e4820f2bbdc663715ab135a7d"
+      },
+      "vulkan": {
+        "gpu_ms": 1.11472,
+        "wall_ms": 1.3737,
+        "rgba_sha256": "6e6b73ff373d7bf37ac21b6fa39455935d2a97cceab013982de7e0e934e63660"
+      }
+    },
+    {
+      "frame": 64,
+      "rgb_squared_error": 5341,
+      "max_channel_error": 56,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.5736,
+        "wall_ms": 16.0219,
+        "rgba_sha256": "a5a91a33d3c100dfd129943bb78347718dbd2ebc2d7cf883b86d9e37833e853f"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12112,
+        "wall_ms": 1.4036,
+        "rgba_sha256": "2fa617cf8f5e0cfb0fb75be947c8be5ef9a2f8f0ccb92c252554f15de30c3b49"
+      }
+    },
+    {
+      "frame": 65,
+      "rgb_squared_error": 386,
+      "max_channel_error": 4,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 2.39984,
+        "wall_ms": 14.8485,
+        "rgba_sha256": "efe2487daa7947874cbad313ea60446cb5d48b5a77c3f6de540db31c3eb6b35d"
+      },
+      "vulkan": {
+        "gpu_ms": 1.11312,
+        "wall_ms": 1.4589,
+        "rgba_sha256": "1d56d78e8b6fe955c95ccaa7f6d96fd81c9904ddaf20fbf48fd6d2a71b44eefa"
+      }
+    },
+    {
+      "frame": 66,
+      "rgb_squared_error": 9285,
+      "max_channel_error": 62,
+      "pixels_over_1": 4,
+      "d3d11": {
+        "gpu_ms": 4.5664,
+        "wall_ms": 15.1333,
+        "rgba_sha256": "21f216b37d6660d659936ab2ca42f98ccfcd6943cf88faeb53b21624b8cd8be1"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12992,
+        "wall_ms": 1.4213,
+        "rgba_sha256": "648a0454fd7b032c01e9b5f67c62080b9b9f274f75433b51349b16f617c7d67c"
+      }
+    },
+    {
+      "frame": 67,
+      "rgb_squared_error": 11349,
+      "max_channel_error": 84,
+      "pixels_over_1": 2,
+      "d3d11": {
+        "gpu_ms": 4.52864,
+        "wall_ms": 15.7179,
+        "rgba_sha256": "ac51abfb0e084dd66ee7fbe2b04292597398fd1ad4819dd929c589ec633bfefa"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12208,
+        "wall_ms": 1.3438,
+        "rgba_sha256": "5da80ef4a2ec414ab2323cb021881cd2d4eda4eb33f15b1fce83ad7c9a8b4f93"
+      }
+    },
+    {
+      "frame": 68,
+      "rgb_squared_error": 16328,
+      "max_channel_error": 83,
+      "pixels_over_1": 5,
+      "d3d11": {
+        "gpu_ms": 4.56624,
+        "wall_ms": 15.2626,
+        "rgba_sha256": "7738695d49fcd72de666f0033b4876c1aaff69b229375428927702b78dbc6215"
+      },
+      "vulkan": {
+        "gpu_ms": 1.13648,
+        "wall_ms": 1.442,
+        "rgba_sha256": "e326afa44b0230574670b024fa16bf0d520e13870e4c470c57ba5b906c8ee15d"
+      }
+    },
+    {
+      "frame": 69,
+      "rgb_squared_error": 342,
+      "max_channel_error": 1,
+      "pixels_over_1": 0,
+      "d3d11": {
+        "gpu_ms": 4.54384,
+        "wall_ms": 16.083,
+        "rgba_sha256": "9dea727f0d5da83869f415e26090e5810df97d9333df9ac107d163f1eb35143c"
+      },
+      "vulkan": {
+        "gpu_ms": 1.1344,
+        "wall_ms": 1.4306,
+        "rgba_sha256": "4b606f32a235679597242e28a726d506e3023d3f5fc4037f243276093984846a"
+      }
+    },
+    {
+      "frame": 70,
+      "rgb_squared_error": 15796,
+      "max_channel_error": 99,
+      "pixels_over_1": 1,
+      "d3d11": {
+        "gpu_ms": 4.58144,
+        "wall_ms": 16.0117,
+        "rgba_sha256": "ac26811c3f22aa762528dfceb136ab7326902c8ffe27f070317a034fa475691c"
+      },
+      "vulkan": {
+        "gpu_ms": 1.1464,
+        "wall_ms": 1.429,
+        "rgba_sha256": "488f69243a188dabdd13cf40a04da57569b28fc547f01994610cf22aa7ec98d6"
+      }
+    },
+    {
+      "frame": 71,
+      "rgb_squared_error": 502,
+      "max_channel_error": 8,
+      "pixels_over_1": 3,
+      "d3d11": {
+        "gpu_ms": 4.54096,
+        "wall_ms": 15.9921,
+        "rgba_sha256": "fa33a3f99e42367826cd8c7d34f29ceda3a4edad7ab09c421b571745304aa857"
+      },
+      "vulkan": {
+        "gpu_ms": 1.12608,
+        "wall_ms": 1.4889,
+        "rgba_sha256": "5ba840a0ca6f9790e1d930ed202945ce819e0b6e68cd1c78552461df106f06fe"
+      }
+    }
+  ]
+}

@@ -14,3 +14,8 @@ add_test(NAME invalid_option COMMAND legacy-lab --invalid)
 set_tests_properties(invalid_option PROPERTIES WILL_FAIL TRUE)
 add_test(NAME software_smoke COMMAND legacy-lab --warp --smoke)
 set_tests_properties(software_smoke PROPERTIES TIMEOUT 90)
+
+option(LEGACY_VULKAN "Build the optional Vulkan 1.3 comparison renderer" OFF)
+if(LEGACY_VULKAN)
+  add_subdirectory(vulkan)
+endif()

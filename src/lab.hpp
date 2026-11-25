@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <d3d11.h>
 #include <dxgi1_4.h>
+#include <filesystem>
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
@@ -46,7 +47,8 @@ class Renderer {
 
   public:
     Renderer(IDXGIAdapter *adapter);
-    DynamicRun dynamicResolution(bool dynamicFirst, unsigned budgetMs);
+    DynamicRun dynamicResolution(bool dynamicFirst, unsigned budgetMs,
+                                 const std::filesystem::path *referenceDir = nullptr);
     FrameRun run(unsigned width, unsigned height, unsigned outputWidth, unsigned outputHeight,
                  unsigned warmups, unsigned samples);
 };

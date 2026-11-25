@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+#include "api_run.hpp"
 #include "lab.hpp"
 #include "shaders.hpp"
 #include <algorithm>
@@ -196,8 +197,9 @@ class ResolutionController {
 };
 } // namespace
 
-DynamicRun Renderer::dynamicResolution(bool dynamicFirst, unsigned budgetMs) {
-    constexpr unsigned ow = 1280, oh = 720, count = 72;
+DynamicRun Renderer::dynamicResolution(bool dynamicFirst, unsigned budgetMs,
+                                       const std::filesystem::path *referenceDir) {
+    constexpr unsigned ow = api_test::width, oh = api_test::height, count = api_test::frames;
     auto code = compile("movingTerrain", "ps_5_0");
     ComPtr<ID3D11PixelShader> moving;
     check(device->CreatePixelShader(code->GetBufferPointer(), code->GetBufferSize(), nullptr, &moving),
@@ -216,7 +218,7 @@ DynamicRun Renderer::dynamicResolution(bool dynamicFirst, unsigned budgetMs) {
     DynamicRun run;
     run.frames.resize(count);
     auto position = [&](unsigned frame) {
-        const float values[4] = {float(frame) / 32.0f, 0, 0, 0};
+        const float values[4] = {api_test::camera(frame), 0, 0, 0};
         context->UpdateSubresource(camera.Get(), 0, nullptr, values, 0, 0);
     };
     auto draw = [&](unsigned scale, unsigned passes) {
@@ -225,11 +227,15 @@ DynamicRun Renderer::dynamicResolution(bool dynamicFirst, unsigned budgetMs) {
     auto sequence = [&](bool adaptive) {
         ResolutionController controller;
         position(0);
-        for (unsigned i = 0; i < 8; ++i)
-            draw(8, 1);
+        for (unsigned i = 0; i < api_test::warmups; ++i) {
+            if (referenceDir)
+                timer.measure([&] { draw(8, 1); });
+            else
+                draw(8, 1);
+        }
         for (unsigned i = 0; i < count; ++i) {
             auto &f = run.frames[i];
-            f.passes = (i >= 24 && i < 48) ? 3 : 1;
+            f.passes = api_test::passes(i);
             const unsigned scale = adaptive ? controller.current() : 8;
             const auto begin = std::chrono::steady_clock::now();
             position(i);
@@ -250,6 +256,18 @@ DynamicRun Renderer::dynamicResolution(bool dynamicFirst, unsigned budgetMs) {
             }
         }
     };
+    if (referenceDir) {
+        sequence(false);
+        for (unsigned i = 0; i < count; ++i) {
+            position(i);
+            draw(8, api_test::passes(i));
+            const auto rgba = readPixels(device.Get(), context.Get(), output);
+            api_test::save(*referenceDir, i, rgba.data());
+        }
+        ID3D11Buffer *none = nullptr;
+        context->PSSetConstantBuffers(0, 1, &none);
+        return run;
+    }
     sequence(dynamicFirst);
     sequence(!dynamicFirst);
     // Replay the recorded scales and exact camera positions. No readback in the timed sequences.
