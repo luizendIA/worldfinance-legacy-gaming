@@ -14,9 +14,9 @@ float ground(float2 p) {
          + .18*sin(2.9*p.x + .4*p.y)*cos(p.y*2.4)
          + .09*cos(5.3*p.y + 1.7*p.x);
 }
-float4 landscape(Vertex v) : SV_Target {
+float4 shadeTerrain(Vertex v, float cameraX) {
     float2 uv = v.uv;
-    float3 eye = float3(0,1.95,-3.5);
+    float3 eye = float3(cameraX,1.95,-3.5);
     float3 ray = normalize(float3((uv.x-.5)*1.78, .24-uv.y, 1));
     float3 sky = lerp(float3(.20,.35,.34),float3(.035,.095,.12),saturate((.50-uv.y)*2.8));
     float2 sun = (uv-float2(.74,.17))*float2(1.78,1);
@@ -40,6 +40,9 @@ float4 landscape(Vertex v) : SV_Target {
     }
     return float4(sky,1);
 }
+float4 landscape(Vertex v) : SV_Target { return shadeTerrain(v,0); }
+cbuffer Camera : register(b0) { float cameraX; };
+float4 movingTerrain(Vertex v) : SV_Target { return shadeTerrain(v,cameraX); }
 Texture2D layer : register(t0);
 SamplerState linearClamp : register(s0);
 float4 composite(Vertex v) : SV_Target { return layer.Sample(linearClamp,v.uv); }
